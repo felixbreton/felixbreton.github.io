@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hulot</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="hulot.png">
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="setDiff(1);demarre();">
+  <p>
+    <span id="info">Trouvez la tête en trop à gauche.</span>
+    <span id="diff">
+      <span id="difficulte"></span>
+      <button onclick="setDiff(0);" id="easy">Aisé</button>
+      <button onclick="setDiff(1);" id="normal">Normal</button>
+      <button onclick="setDiff(2);" id="hard">Ardu</button>
+    </span>
+    <button onclick="changeTete();" id="chtete">Changer de tête.</button>
+    <span id="timer" style="float:right;">4.0</span>
+  </p>
+  <div class="atoms" id="div1"></div>
+  <!--<div class="vline" id="line"></div>-->
+  <div class="atoms" id="div2"></div>
+  <script src="hulot.js"></script>
+</body>
+</html>
