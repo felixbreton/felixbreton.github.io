@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sci-hub domain checker</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1>Sci-hub domain checker</h1>
+  <p>
+    This website checks which sci-hub domains work. The tests are performed by your browser, so this page is always up to date, and takes into account local censorship.
+    <br>
+    The entire page is in one file, so you can save it on your computer and it will keep working even if the original is taken down.
+    <br>
+    <a href="#FAQ">More information</a>
+  </p>
+  <p id='works'>
+    These domains work :
+  </p>
+  <p id='loads'>
+    These domains load only over http, and the search engine does not work :
+  </p>
+  <p id='broken'>
+    These domains are broken :
+  </p>
+  <p>
+    <a name="FAQ"></a>
+    <h3>How does this work ?</h3>
+    This page includes a script that attempts to download the raven logo from each sci-hub domain. If the image loads, the domain works.
+    <h3>What do I do if no domain works ?</h3>
+    You can try accessing this page through a proxy or VPN in case some domains are blocked in your country.
+    <br>
+    The image file used by this website may disappear if sci-hub is redesigned. Contact me if that's the case.
+    <h3>How about the .onion page and access by IP ?</h3>
+    Sci-hub is supposedly accessible through TOR at scihub22266oqcxt.onion and by direct IP access at 80.82.77.83, but these methods have never worked properly as far as I know.
+  </p>
+  <p>
+    <h3>Contact</h3>
+    You can contact me through github or by email at sryvk.oergba8NGtznvy.pbz (ROT13).
+  </p>
+</body>
+<script>
+s=["sci-hub.nz","sci-hub.cn","sci-hub.hk","sci-hub.tw","sci-hub.ws","sci-hub.org","sci-hub.cc","sci-hub.ac","sci-hub.io","sci-hub.la","sci-hub.mn","sci-hub.name","sci-hub.tv","sci-hub.bz","sci-hub.biz","sci-hub.is","sci-hub.nu","sci-hub.ga","sci-hub.gq"];
+for(var d in s)
+{
+  domainWorks(s[d]);
+}
+function domainWorks(domain)
+{
+  var t=document.createElement("p");
+  t.innerHTML='<a href="https://'+domain+'"">'+domain+'</a>';
+  var img = document.createElement("img");
+  img.onload = function()
+  {
+    document.getElementById('works').appendChild(t);
+  };
+  img.onerror = function()
+  {
+    img2=document.createElement("img");
+    img2.onload=function()
+    {
+      document.getElementById('loads').appendChild(t);
+    };
+    img2.onerror=function()
+    {
+      document.getElementById('broken').appendChild(t);
+    };
+    img2.src="http://"+domain+"/misc/img/raven_1.png";
+  };
+  img.src = "http://cyber."+domain+"/misc/img/raven_1.png";
+}
+</script>
+</html>
