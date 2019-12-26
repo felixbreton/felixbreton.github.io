@@ -3,6 +3,7 @@
 <head>
   <title>Sci-hub domain checker</title>
   <meta charset="utf-8">
+  <link rel="icon" href="../rsico.png">
 </head>
 <body>
   <h1>Sci-hub domain checker</h1>
@@ -15,9 +16,6 @@
   </p>
   <p id='works'>
     These domains work :
-  </p>
-  <p id='loads'>
-    These domains load only over http, and the search engine does not work :
   </p>
   <p id='broken'>
     These domains are broken :
@@ -39,7 +37,7 @@
   </p>
 </body>
 <script>
-s=["sci-hub.nz","sci-hub.cn","sci-hub.hk","sci-hub.tw","sci-hub.ws","sci-hub.org","sci-hub.cc","sci-hub.ac","sci-hub.io","sci-hub.la","sci-hub.mn","sci-hub.name","sci-hub.tv","sci-hub.bz","sci-hub.biz","sci-hub.is","sci-hub.nu","sci-hub.ga","sci-hub.gq"];
+s=["sci-hub.se","mg.scihub.ltd","sci-hub.ren","scihub.bban.top","scihub.wikicn.top","sci-hub.nz","sci-hub.cn","sci-hub.hk","sci-hub.tw","sci-hub.ws","sci-hub.org","sci-hub.cc","sci-hub.ac","sci-hub.io","sci-hub.la","sci-hub.mn","sci-hub.name","sci-hub.tv","sci-hub.bz","sci-hub.biz","sci-hub.is","sci-hub.nu","sci-hub.ga","sci-hub.gq"];
 for(var d in s)
 {
   domainWorks(s[d]);
@@ -55,18 +53,9 @@ function domainWorks(domain)
   };
   img.onerror = function()
   {
-    img2=document.createElement("img");
-    img2.onload=function()
-    {
-      document.getElementById('loads').appendChild(t);
-    };
-    img2.onerror=function()
-    {
-      document.getElementById('broken').appendChild(t);
-    };
-    img2.src="http://"+domain+"/misc/img/raven_1.png";
+    document.getElementById('broken').appendChild(t);
   };
-  img.src = "http://cyber."+domain+"/misc/img/raven_1.png";
+  img.src = "http://"+domain+"/misc/img/raven_1.png";
 }
 </script>
 </html>
